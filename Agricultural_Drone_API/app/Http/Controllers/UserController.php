@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,9 +21,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function register(StoreUserRequest $request)
     {
+        $user = User::store($request);
         
+        $token = null;
+        if ($user->role_id == '1') {
+            $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
+        } else {
+            $token = $user->createToken("USER-TOKEN", ['select']);
+        }
+        return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
     }
 
     /**
@@ -46,5 +56,29 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function login(StoreUserRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
+        // dd(Auth::attempt($credentials));
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            // dd($user->createToken('API Token')->plainTextToken);
+            $token = $user->createToken('API Token')->plainTextToken;
+            return response()->json([
+                'user' => $user,
+                'token' => $token
+            ]);
+        }
+        return response()->json([
+            'message' => 'Invalid credentials'
+        ], 401);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }

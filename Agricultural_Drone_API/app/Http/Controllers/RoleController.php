@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -15,17 +16,14 @@ class RoleController extends Controller
         $role = Role::all();
         return response()->json(['success' => true, 'data' => $role], 201);
     }
-    
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
         $role = Role::store($request);
         return response()->json(['success' => true, 'data' => $role], 201);
-
     }
-
     /**
      * Display the specified resource.
      */

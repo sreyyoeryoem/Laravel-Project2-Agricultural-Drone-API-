@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class StoreUserRequest extends FormRequest
+class StoreRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,17 +25,10 @@ class StoreUserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-   
     public function rules(): array
     {
         return [
-            'name' => [
-                'required',
-                Rule::unique('users')->ignore($this->id),
-            ],
-            'email' => 'required',
-            'password' => 'required',
-            'role_id' => 'required',
+            "name" => "required",
         ];
     }
 }

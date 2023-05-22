@@ -1,9 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\RoleController;
-=======
->>>>>>> 0169eb58332729b87dea7bd86dfb9c48a8294371
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-<<<<<<< HEAD
 Route::middleware('auth:sanctum')->group( function() {
     
 });
+// ============================Role====================================
 
 Route::get('/roles', [RoleController::class, 'index']);
 Route::post('/roles', [RoleController::class, 'store']);
@@ -34,9 +31,7 @@ Route::get('/roles', [RoleController::class, 'show']);
 Route::put('/roles', [RoleController::class, 'update']);
 Route::delete('/roles', [RoleController::class, 'destroy']);
 
-=======
+// ============================User====================================
 
-
-// ======================================user==========================
-Route::get("/users",[UserController::class,"index"]);
->>>>>>> 0169eb58332729b87dea7bd86dfb9c48a8294371
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'register']);

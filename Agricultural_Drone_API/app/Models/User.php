@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -42,4 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function store($request,$id=null)
+    {
+        $user = $request->only
+        ([
+            "name",
+             "email",
+             "password",
+             "role_id",
+        ]);
+        $user = self ::updateOrCreate(["id"=>$id], $user);
+        return $user;
+    }
 }
