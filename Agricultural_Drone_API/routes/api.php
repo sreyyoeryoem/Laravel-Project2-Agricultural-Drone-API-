@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\UserController;
+use App\Models\Location;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +38,7 @@ Route::delete('/roles', [RoleController::class, 'destroy']);
 
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/users', [UserController::class, 'register']);
+
+// =============================Location================================
+
+Route::get('/locations', [LocationController::class, 'index']);
