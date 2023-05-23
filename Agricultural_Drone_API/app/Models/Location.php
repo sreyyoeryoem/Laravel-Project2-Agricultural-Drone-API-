@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Location extends Model
 {
@@ -21,5 +22,9 @@ class Location extends Model
         ]);
         $location = self ::updateOrCreate(["id"=>$id], $location);
         return $location;
+    }
+
+    public function plan():BelongsTo{
+        return $this->belongsTo(Plan::class);
     }
 }

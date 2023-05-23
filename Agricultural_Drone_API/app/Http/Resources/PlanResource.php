@@ -16,6 +16,7 @@ class PlanResource extends JsonResource
     {
         return [
             'name' => $this -> name,
+            'type' => $this -> type,
             'datetime' => $this -> datetime,
             'area' => $this -> area,
             'spray_density' => $this -> spray_density,
