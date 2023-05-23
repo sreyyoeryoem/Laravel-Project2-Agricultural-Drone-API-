@@ -21,7 +21,6 @@ class PlanResource extends JsonResource
             'spray_density' => $this -> spray_density,
             'user_id' => $this -> user_id,
             'location_id' => $this -> location_id,
-
         ];
     }
 }
