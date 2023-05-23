@@ -13,8 +13,7 @@ class InstructionController extends Controller
     public function index()
     {
         $instruction = Instruction::all();
-        return response()->json(['success' => true, 'data' => $instruction], 200);
-        
+        return response()->json(['success' => true, 'data' => $instruction], 200);    
     }
 
     /**
@@ -22,14 +21,10 @@ class InstructionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(1)
-        // dd($request->input("Maximum_altitude"));
         $instruction = Instruction::create([
-            'Flight_time' => $request->input("Flight_time"),
-            'Maximum_altitude' => $request->input("Maximum_altitude"),
-            'Maximum_speed' => $request->input("Maximum_speed"),
-            'Camera' => $request->input("Camera"),
             'action' => $request->input("action"),
+            'user_id' => $request->input("user_id"),
+            'drone_id' => $request->input("drone_id"),
         ]);
         return response()->json(['success' => true, 'data' => $instruction], 201);
     }

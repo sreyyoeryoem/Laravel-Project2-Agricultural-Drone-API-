@@ -52,9 +52,10 @@ Route::post("/locations",[LocationController::class, 'store']);
 Route::get("/farms",[FarmController::class, 'index']);
 Route::post("/farms",[FarmController::class, 'store']);
 
+
 // =============================Instruction================================
-// Route::get("/instructions",[InstructionController::class, 'index']);
-// Route::post("/instructions",[InstructionController::class, 'store']);
+Route::get("/instructions",[InstructionController::class, 'index']);
+Route::post("/instructions",[InstructionController::class, 'store']);
 
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    
