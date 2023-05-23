@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class UserController extends Controller
     public function register(StoreUserRequest $request)
     {
         $user = User::store($request);
-        
+        $user= UserResource::collection($user);
         $token = null;
         if ($user->role_id == '1') {
             $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);

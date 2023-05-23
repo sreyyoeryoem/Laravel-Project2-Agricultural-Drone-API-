@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\drone_plansController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
@@ -33,9 +34,9 @@ Route::middleware('auth:sanctum')->group( function() {
 
 Route::get('/roles', [RoleController::class, 'index']);
 Route::post('/roles', [RoleController::class, 'store']);
-Route::get('/roles', [RoleController::class, 'show']);
-Route::put('/roles', [RoleController::class, 'update']);
-Route::delete('/roles', [RoleController::class, 'destroy']);
+// Route::get('/roles', [RoleController::class, 'show']);
+// Route::put('/roles', [RoleController::class, 'update']);
+// Route::delete('/roles', [RoleController::class, 'destroy']);
 
 // ============================User====================================
 
@@ -54,3 +55,7 @@ Route::post("/farms",[FarmController::class, 'store']);
 // =============================Instruction================================
 Route::get("/instructions",[InstructionController::class, 'index']);
 Route::post("/instructions",[InstructionController::class, 'store']);
+
+// =============================Done-plans================================
+Route::get("/done-plan",[drone_plansController::class, 'index']);
+Route::post("/done-plan",[drone_plansController::class, 'store']);

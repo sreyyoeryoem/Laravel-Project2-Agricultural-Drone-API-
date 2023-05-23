@@ -20,6 +20,7 @@ class Plan extends Model
         'location_id'
     ];
 
+// ======================Relationship==========================
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
     }
