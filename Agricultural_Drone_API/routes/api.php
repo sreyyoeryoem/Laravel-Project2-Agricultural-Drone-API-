@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DronController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
@@ -52,5 +53,10 @@ Route::get("/farms",[FarmController::class, 'index']);
 Route::post("/farms",[FarmController::class, 'store']);
 
 // =============================Instruction================================
-Route::get("/instructions",[InstructionController::class, 'index']);
-Route::post("/instructions",[InstructionController::class, 'store']);
+// Route::get("/instructions",[InstructionController::class, 'index']);
+// Route::post("/instructions",[InstructionController::class, 'store']);
+
+// ===============================Drone=====================================
+Route::get('/drones', [DronController::class, 'index']);    
+Route::post('/drones', [DronController::class, 'store']);
+
