@@ -15,6 +15,7 @@ class DroneResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            "drone_id" => $this->drone_id,
             'name' => $this->name,
             'battery' => $this->battery,
             'payload' => $this->payload,

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\DronController;
+use App\Http\Controllers\drone_plansController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 
 use App\Http\Controllers\UserController;
@@ -34,9 +36,9 @@ Route::middleware('auth:sanctum')->group( function() {
 
 Route::get('/roles', [RoleController::class, 'index']);
 Route::post('/roles', [RoleController::class, 'store']);
-Route::get('/roles', [RoleController::class, 'show']);
-Route::put('/roles', [RoleController::class, 'update']);
-Route::delete('/roles', [RoleController::class, 'destroy']);
+// Route::get('/roles', [RoleController::class, 'show']);
+// Route::put('/roles', [RoleController::class, 'update']);
+// Route::delete('/roles', [RoleController::class, 'destroy']);
 
 // ============================User====================================
 
@@ -52,6 +54,9 @@ Route::post("/locations",[LocationController::class, 'store']);
 Route::get("/farms",[FarmController::class, 'index']);
 Route::post("/farms",[FarmController::class, 'store']);
 
+// ===============================plan=====================================
+Route::get('/plans', [PlanController::class, 'index']);    
+Route::post('/plans', [PlanController::class, 'store']);
 
 // =============================Instruction================================
 Route::get("/instructions",[InstructionController::class, 'index']);
@@ -60,4 +65,8 @@ Route::post("/instructions",[InstructionController::class, 'store']);
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    
 Route::post('/drones', [DronController::class, 'store']);
+
+// ===============================Drone_plan=====================================
+Route::get('/drone_plans', [drone_plansController::class, 'index']);    
+Route::post('/drone_plans', [drone_plansController::class, 'store']);
 

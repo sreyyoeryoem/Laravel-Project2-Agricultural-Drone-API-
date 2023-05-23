@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Instruction extends Model
+class Drone_plan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'action',
-        'user_id',
-        'drone_id'
+        'drone_id',
+        "plan_id",
     ];
-
 }
