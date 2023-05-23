@@ -2,30 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Drone_plan;
+use App\Http\Requests\StorePlanRequest;
+use App\Http\Resources\PlanResource;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
-class drone_plansController extends Controller
+class PlanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $drone_plan = Drone_plan::all();
-        return response()->json(['success' => true, 'data' => $drone_plan], 200);
+        $plan = Plan::all();
+        $plan = PlanResource::collection($plan);
+        return response()->json(['success' => true, 'data' => $plan], 201);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePlanRequest $request)
     {
-        $drone_plan = Drone_plan::create([
-            'drone_id' => $request->input("drone_id"),
-            'plan_id' => $request->input("plan_id"),
-        ]);
-        return response()->json(['success' => true, 'data' => $drone_plan], 201);
+        $plan = Plan::store($request);
+        return response()->json(['success' => true, 'data' => $plan], 201);
     }
 
     /**
@@ -33,8 +34,7 @@ class drone_plansController extends Controller
      */
     public function show(string $id)
     {
-        $drone_plan = Drone_plan::all();
-
+        //
     }
 
     /**

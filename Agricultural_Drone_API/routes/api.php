@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DronController;
 use App\Http\Controllers\drone_plansController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 
 use App\Http\Controllers\UserController;
@@ -52,10 +54,18 @@ Route::post("/locations",[LocationController::class, 'store']);
 Route::get("/farms",[FarmController::class, 'index']);
 Route::post("/farms",[FarmController::class, 'store']);
 
+// ===============================plan=====================================
+Route::get('/plans', [PlanController::class, 'index']);    
+Route::post('/plans', [PlanController::class, 'store']);
 // =============================Instruction================================
-Route::get("/instructions",[InstructionController::class, 'index']);
-Route::post("/instructions",[InstructionController::class, 'store']);
+// Route::get("/instructions",[InstructionController::class, 'index']);
+// Route::post("/instructions",[InstructionController::class, 'store']);
 
-// =============================Done-plans================================
-Route::get("/done-plan",[drone_plansController::class, 'index']);
-Route::post("/done-plan",[drone_plansController::class, 'store']);
+// ===============================Drone=====================================
+Route::get('/drones', [DronController::class, 'index']);    
+Route::post('/drones', [DronController::class, 'store']);
+
+// ===============================Drone_plan=====================================
+Route::get('/drone_plans', [drone_plansController::class, 'index']);    
+Route::post('/drone_plans', [drone_plansController::class, 'store']);
+

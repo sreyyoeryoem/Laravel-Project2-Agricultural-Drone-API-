@@ -16,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $users = UserResource::collection($users);
         return response()->json(["Get all uses",true,"users"=>$users],200);
     }
 
@@ -35,29 +36,6 @@ class UserController extends Controller
         return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 
     public function login(StoreUserRequest $request)
     {
