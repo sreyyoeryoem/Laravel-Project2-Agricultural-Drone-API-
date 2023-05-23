@@ -10,6 +10,16 @@ class Location extends Model
     use HasFactory;
     protected $fillable = [
         'lat',
-        'lag',
+        'lng',
     ];
+    public static function store($request,$id=null)
+    {
+        $location = $request->only
+        ([
+            'lat',
+            'lng',
+        ]);
+        $location = self ::updateOrCreate(["id"=>$id], $location);
+        return $location;
+    }
 }

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RoleController;
+
 use App\Http\Controllers\UserController;
 use App\Models\Location;
 use App\Models\Role;
@@ -41,4 +42,6 @@ Route::post('/users', [UserController::class, 'register']);
 
 // =============================Location================================
 
-Route::get('/locations', [LocationController::class, 'index']);
+Route::get("/locations",[LocationController::class, 'index']);
+Route::post("/locations",[LocationController::class, 'store']);
+
