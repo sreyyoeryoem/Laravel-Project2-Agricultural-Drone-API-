@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FarmController;
+use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RoleController;
 
@@ -45,3 +47,10 @@ Route::post('/users', [UserController::class, 'register']);
 Route::get("/locations",[LocationController::class, 'index']);
 Route::post("/locations",[LocationController::class, 'store']);
 
+// =============================Farm================================
+Route::get("/farms",[FarmController::class, 'index']);
+Route::post("/farms",[FarmController::class, 'store']);
+
+// =============================Instruction================================
+Route::get("/instructions",[InstructionController::class, 'index']);
+Route::post("/instructions",[InstructionController::class, 'store']);
