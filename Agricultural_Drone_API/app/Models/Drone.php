@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Drone extends Model
 {
@@ -33,6 +35,9 @@ class Drone extends Model
         $drone = self::updateOrCreate(['id' => $id], $drone);
         return $drone;
     }
+    public function locations():HasMany{
+        return $this->hasMany(Location::class);
+    }
 
     public function drone_plan():BelongsToMany{
         return $this->belongsToMany(Plan::class,"drone_plan")->withTimestamps();
@@ -41,4 +46,9 @@ class Drone extends Model
     public function instruction():BelongsToMany{
         return $this->belongsToMany(User::class,"instruction")->withTimestamps();
     }
+
+    public function map():BelongsTo{
+        return $this->belongsTo(Map::class);
+    }
+
 }
