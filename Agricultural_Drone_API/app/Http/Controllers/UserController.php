@@ -16,7 +16,6 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $users = UserResource::collection($users);
         return response()->json(["Get all uses",true,"users"=>$users],200);
     }
 
@@ -25,12 +24,14 @@ class UserController extends Controller
      */
     public function register(StoreUserRequest $request)
     {
+     
         $user = User::store($request);
-        $user= UserResource::collection($user);
         $token = null;
+
         if ($user->role_id == '1') {
             $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
         } else {
+            // dd(2);
             $token = $user->createToken("USER-TOKEN", ['select']);
         }
         return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
