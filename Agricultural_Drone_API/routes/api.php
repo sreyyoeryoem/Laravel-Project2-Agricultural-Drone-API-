@@ -5,6 +5,7 @@ use App\Http\Controllers\drone_plansController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 
@@ -70,3 +71,6 @@ Route::post('/drones', [DronController::class, 'store']);
 Route::get('/drone_plans', [drone_plansController::class, 'index']);    
 Route::post('/drone_plans', [drone_plansController::class, 'store']);
 
+// ===============================Map=====================================
+Route::get('/maps', [MapController::class, 'index']);    
+Route::post('/maps', [MapController::class, 'store']);

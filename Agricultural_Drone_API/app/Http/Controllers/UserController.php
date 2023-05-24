@@ -24,11 +24,14 @@ class UserController extends Controller
      */
     public function register(StoreUserRequest $request)
     {
+     
         $user = User::store($request);
         $token = null;
+
         if ($user->role_id == '1') {
             $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
         } else {
+            // dd(2);
             $token = $user->createToken("USER-TOKEN", ['select']);
         }
         return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
