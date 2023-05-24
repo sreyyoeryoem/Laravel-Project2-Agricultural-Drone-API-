@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drone-plans', function (Blueprint $table) {
+        Schema::create('instructions', function (Blueprint $table) {
             $table->id();
+            $table->string('action');
+
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->unsignedBigInteger('drone_id')->unsigned();
             $table->foreign('drone_id')->references('id')->on('drones')->onDelete('cascade');
-            $table->unsignedBigInteger('plan_id')->unsigned();
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
-<<<<<<< HEAD:Agricultural_Drone_API/database/migrations/2023_05_23_082813_create_drone-plans_table.php
-=======
-
->>>>>>> 7adf5ffc64a859c54691a21a772300843f868880:Agricultural_Drone_API/database/migrations/2023_05_23_120233_create_drone_plans_table.php
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drone-plans');
+        Schema::dropIfExists('instructions');
     }
 };

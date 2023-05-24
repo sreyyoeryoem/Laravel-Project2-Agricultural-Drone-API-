@@ -58,9 +58,10 @@ Route::post("/farms",[FarmController::class, 'store']);
 // ===============================plan=====================================
 Route::get('/plans', [PlanController::class, 'index']);    
 Route::post('/plans', [PlanController::class, 'store']);
+
 // =============================Instruction================================
-// Route::get("/instructions",[InstructionController::class, 'index']);
-// Route::post("/instructions",[InstructionController::class, 'store']);
+Route::get("/instructions",[InstructionController::class, 'index']);
+Route::post("/instructions",[InstructionController::class, 'store']);
 
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    

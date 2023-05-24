@@ -27,4 +27,9 @@ class Location extends Model
     public function plan():BelongsTo{
         return $this->belongsTo(Plan::class);
     }
+
+    public function drone():BelongsTo{
+        return $this->belongsTo(Drone::class);
+    }
 }
+
