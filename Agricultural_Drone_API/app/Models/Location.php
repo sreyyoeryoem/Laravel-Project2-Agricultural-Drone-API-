@@ -24,6 +24,8 @@ class Location extends Model
         return $location;
     }
 
+// ============================Relationship====================
+
     public function plan():BelongsTo{
         return $this->belongsTo(Plan::class);
     }

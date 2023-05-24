@@ -66,6 +66,7 @@ Route::post("/instructions",[InstructionController::class, 'store']);
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    
 Route::post('/drones', [DronController::class, 'store']);
+// Route::post('/drones{drone_id}', [DronController::class, 'show']);
 
 // ===============================Drone_plan=====================================
 Route::get('/drone_plans', [drone_plansController::class, 'index']);    

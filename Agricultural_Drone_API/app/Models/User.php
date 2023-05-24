@@ -60,6 +60,7 @@ class User extends Authenticatable
         $user = self ::updateOrCreate(["id"=>$id], $user);
         return $user;
     }
+// ===================================Relationship=============================
 
     public function plans():HasMany{
         return $this->hasMany(Plan::class);
