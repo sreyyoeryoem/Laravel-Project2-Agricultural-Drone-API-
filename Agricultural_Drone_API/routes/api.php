@@ -57,7 +57,9 @@ Route::post("/farms",[FarmController::class, 'store']);
 
 // ===============================plan=====================================
 Route::get('/plans', [PlanController::class, 'index']);    
-Route::post('/plans', [PlanController::class, 'store']);
+Route::post('/plans/plan', [PlanController::class, 'store']);
+// Route::post('/plans/plan', [PlanController::class, 'store']);
+
 
 // =============================Instruction================================
 Route::get("/instructions",[InstructionController::class, 'index']);
@@ -66,7 +68,7 @@ Route::post("/instructions",[InstructionController::class, 'store']);
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    
 Route::post('/drones', [DronController::class, 'store']);
-// Route::post('/drones{drone_id}', [DronController::class, 'show']);
+Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDroen']);
 
 // ===============================Drone_plan=====================================
 Route::get('/drone_plans', [drone_plansController::class, 'index']);    
@@ -75,3 +77,4 @@ Route::post('/drone_plans', [drone_plansController::class, 'store']);
 // ===============================Map=====================================
 Route::get('/maps', [MapController::class, 'index']);    
 Route::post('/maps', [MapController::class, 'store']);
+Route::get('/maps/{province}/{id}', [MapController::class, 'DownloadMapPhoto']);

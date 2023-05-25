@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDroneRequest;
 use App\Http\Resources\DroneResource;
+use App\Http\Resources\showLocationDrone;
 use App\Models\Drone;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,14 @@ class DronController extends Controller
         $drone = Drone::store($request);
         return response()->json(['success' => true, 'data' => $drone], 201);
     }
+
+    public function getLocationDroen(string $id){
+        $data = Drone::where("drone_id", $id)->first();
+        $data = new showLocationDrone($data);
+        return response()->json(['success' => true, 'data' => $data], 200);
+        
+    }
+
 
  
 }
