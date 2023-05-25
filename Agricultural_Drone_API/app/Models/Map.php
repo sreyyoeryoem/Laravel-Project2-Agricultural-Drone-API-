@@ -29,6 +29,8 @@ class Map extends Model
         return $map;
     }
 
+    // ===============================relationships===============================
+
     public function farm():BelongsTo{
         return $this->belongsTo(Farm::class);
     }

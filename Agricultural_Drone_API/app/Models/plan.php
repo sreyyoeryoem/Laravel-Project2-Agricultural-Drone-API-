@@ -45,9 +45,7 @@ class Plan extends Model
         return $this->hasOne(Location::class);
     }
 
-    public function drone_plan():BelongsToMany{
-        return $this->belongsToMany(Drone::class,"drone_plan")->withTimestamps();
+    public function instruction():BelongsToMany{
+        return $this->belongsToMany(Drone::class,"instruction")->withTimestamps();
     }
-  
-  
 }

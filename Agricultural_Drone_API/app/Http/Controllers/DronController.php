@@ -28,5 +28,20 @@ class DronController extends Controller
         return response()->json(['success' => true, 'data' => $drone], 201);
     }
 
- 
+
+    public function show(string $id)
+    {
+        $drone = Drone::where("drone_id", $id)->first();
+        return response()->json(['success' => true, 'data' => $drone], 201);
+    }
+
+
+    public function update(StoreDroneRequest $request, string $drone_id)
+    {
+        $drone = Drone::where("drone_id", $drone_id)->first();
+        $drone = $drone::store($request,$drone_id);
+        return response()->json(['success' => true, 'data' => $drone], 201);
+    }
+    
 }
+

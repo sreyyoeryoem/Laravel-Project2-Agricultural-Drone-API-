@@ -61,6 +61,8 @@ class User extends Authenticatable
         return $user;
     }
 
+// ==================================relationships================================
+
     public function plans():HasMany{
         return $this->hasMany(Plan::class);
     }
@@ -69,7 +71,4 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function instruction():BelongsToMany{
-        return $this->belongsToMany(Drone::class,"instruction")->withTimestamps();
-    }
 }

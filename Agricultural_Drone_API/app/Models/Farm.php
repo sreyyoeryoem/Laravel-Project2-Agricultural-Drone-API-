@@ -23,6 +23,7 @@ class Farm extends Model
         return $farm;
     }
 
+    // =============================relationships =============================
     public function map():HasOne{
         return $this->hasOne(Map::class);
     }
