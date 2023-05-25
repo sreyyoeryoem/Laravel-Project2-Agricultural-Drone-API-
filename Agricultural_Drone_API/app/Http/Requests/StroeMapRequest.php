@@ -28,8 +28,7 @@ class StroeMapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image_type' => 'required',
-            'quality_image' => 'required',
+            'image' => 'required',
             'drone_id' => 'required',
             'farm_id' => 'required',
         ];
