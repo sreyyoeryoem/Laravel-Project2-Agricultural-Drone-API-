@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreDroneRequest extends FormRequest
+class StoreInstructionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,13 +28,10 @@ class StoreDroneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "drone_id" => "required",
-            'name' => 'required',
-            'battery' => 'required',
-            'payload' => 'required',
-            'Maximum_altitude' => 'required',
-            'Maximum_speed' => 'required',
-            'location_id' => 'required', 
+            "action" => 'required',
+            "instructions" => 'required',
+            "plan_id" => "required",
+            "dron_id" => "required",
         ];
     }
 }

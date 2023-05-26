@@ -37,6 +37,7 @@ class Plan extends Model
     }
 
 // ======================Relationship==========================
+
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
     }
@@ -45,7 +46,7 @@ class Plan extends Model
         return $this->hasOne(Location::class);
     }
 
-    public function instruction():BelongsToMany{
-        return $this->belongsToMany(Drone::class,"instruction")->withTimestamps();
+    public function instruction():HasMany{
+        return $this->HasMany(Instruction::class);
     }
 }

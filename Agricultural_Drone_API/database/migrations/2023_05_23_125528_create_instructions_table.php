@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
-            $table->string('action');
-
+            $table->boolean('action')->default(0);
+            $table->string('instructions');
             $table->unsignedBigInteger('plan_id')->unsigned();
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
 

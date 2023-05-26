@@ -37,9 +37,6 @@ Route::middleware('auth:sanctum')->group( function() {
 
 Route::get('/roles', [RoleController::class, 'index']);
 Route::post('/roles', [RoleController::class, 'store']);
-// Route::get('/roles', [RoleController::class, 'show']);
-// Route::put('/roles', [RoleController::class, 'update']);
-// Route::delete('/roles', [RoleController::class, 'destroy']);
 
 // ============================User====================================
 
@@ -57,9 +54,9 @@ Route::post("/farms",[FarmController::class, 'store']);
 
 // ===============================plan=====================================
 Route::get('/plans', [PlanController::class, 'index']);    
+Route::post('/plans', [PlanController::class, 'store']);
 Route::get('/plans/{name}', [PlanController::class, 'show']);
 Route::post('/plans/plan', [PlanController::class, 'store']);
-
 
 
 // =============================Instruction================================
@@ -69,7 +66,10 @@ Route::post("/instructions",[InstructionController::class, 'store']);
 // ===============================Drone=====================================
 Route::get('/drones', [DronController::class, 'index']);    
 Route::post('/drones', [DronController::class, 'store']);
-Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDroen']);
+Route::get('/drones/{drone_id}', [DronController::class, 'show']);
+Route::put('/drones/{drone_id}', [DronController::class, 'update']);
+Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDrone']);
+Route::put('/udpdat_drones_instructions/{drone_id}', [DronController::class, 'updateStatusDrone']);
 
 // ===============================Drone_plan=====================================
 Route::get('/drone_plans', [drone_plansController::class, 'index']);    

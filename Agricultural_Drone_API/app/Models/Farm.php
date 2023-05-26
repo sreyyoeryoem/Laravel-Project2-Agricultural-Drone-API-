@@ -20,13 +20,15 @@ class Farm extends Model
         $farm = $request->only
         ([
             'name',
-        
         ]);
         $farm = self ::updateOrCreate(["id"=>$id], $farm);
         return $farm;
     }
 
+// ================================relationship================================
+
     public function maps():HasMany{
         return $this->hasMany(Map::class);
     }
+    
 }

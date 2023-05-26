@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDroneRequest;
+use App\Http\Requests\StoreInstructionRequest;
 use App\Http\Resources\DroneResource;
 use App\Http\Resources\showLocationDrone;
 use App\Models\Drone;
+use App\Models\Instruction;
 use Illuminate\Http\Request;
 
 class DronController extends Controller
@@ -33,25 +35,32 @@ class DronController extends Controller
     public function show(string $id)
     {
         $drone = Drone::where("drone_id", $id)->first();
-        return response()->json(['success' => true, 'data' => $drone], 201);
+        return response()->json(['success' => true, 'data' => $drone], 200);
     }
 
 
     public function update(StoreDroneRequest $request, string $drone_id)
     {
         $drone = Drone::where("drone_id", $drone_id)->first();
-        $drone = $drone::store($request,$drone_id);
-        return response()->json(['success' => true, 'data' => $drone], 201);
+        $drone = $drone::store($request,$drone_id);   
+        return response()->json(['success' => true, 'data' => $drone], 200);
     }
     
-    public function getLocationDroen(string $id){
+    public function getLocationDrone(string $id){
         $data = Drone::where("drone_id", $id)->first();
         $data = new showLocationDrone($data);
         return response()->json(['success' => true, 'data' => $data], 200);
         
     }
 
-
- 
+    public function updateStatusDrone(Request $request, $drone_id){
+    $drone = Drone::where('drone_id',$drone_id)->first();
+    $instruction = $drone->instructions();
+    $instruction->update([
+        "action" => request("action"),
+    ]);
+    return $instruction->get();
+                  
+    }
 }
 

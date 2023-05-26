@@ -22,6 +22,7 @@ class DroneResource extends JsonResource
             'Maximum_altitude' => $this->maximum_altitude,
             'Maximum_speed' => $this->maximum_speed,
             'location_id' => $this->location_id,
+            "instructions" => $this->instructions,
         ];
     }
 }

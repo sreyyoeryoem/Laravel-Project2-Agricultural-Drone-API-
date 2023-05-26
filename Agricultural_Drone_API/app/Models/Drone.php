@@ -35,16 +35,15 @@ class Drone extends Model
         $drone = self::updateOrCreate(['drone_id' => $id], $drone);
         return $drone;
     }
+
+    // ===============================relationships=============================
+    
     public function location():BelongsTo{
         return $this->BelongsTo(Location::class);
     }
-    
-    public function drone_plan():BelongsToMany{
-        return $this->belongsToMany(Plan::class,"drone_plan")->withTimestamps();
-    }
-  
-    public function instruction():BelongsToMany{
-        return $this->belongsToMany(Plan::class,"instruction")->withTimestamps();
+     
+    public function instructions():HasMany{
+        return $this->HasMany(Instruction::class);
     }
 
     public function map():BelongsTo{
