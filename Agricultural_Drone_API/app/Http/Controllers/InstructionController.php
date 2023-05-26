@@ -23,10 +23,11 @@ class InstructionController extends Controller
     {
         $instruction = Instruction::create([
             'action' => $request->input("action"),
-            'user_id' => $request->input("user_id"),
+            'instructions' => $request->input("instructions"),
+            'plan_id' => $request->input("plan_id"),
             'drone_id' => $request->input("drone_id"),
         ]);
         return response()->json(['success' => true, 'data' => $instruction], 201);
     }
-    
+
 }
