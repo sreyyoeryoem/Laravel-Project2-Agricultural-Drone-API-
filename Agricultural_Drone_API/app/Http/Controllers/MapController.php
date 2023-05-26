@@ -20,10 +20,7 @@ class MapController extends Controller
     {
         $map  = Map::all();
         $map = MapResource::collection($map);
-        return response()->json(['success' => true, 'data' => $map], 200);
-
-
-    
+        return response()->json(['success' => true, 'data' => $map], 200);  
     }
 
     /**
@@ -54,67 +51,14 @@ class MapController extends Controller
             }
         }
 
-    
-
-
-
-
-
-
     {
-    //     $map = Farm::where('id', $id)
-    //     ->whereHas('maps',$map = Farm::where('id', $id)
-    //     ->whereHas('maps', function ($query) use ($province) {
-    //         $query->where('province', $province);
-    //     })
-    //     ->with('maps')->first());
-    //    dd($map);
-    // return (1);
         $province = Map::where('province', $province)->first();
-        // dd($province);
-        // if(!isset($province)){
-        //     return "doesn't exist";
-        // }
         $farms = $province->farm->where("id",$id)->first();
         
         dd($farms);
-        // if(empty($farms)){
-        //     return "doesn't exist";
-        // }
-
-        // dd(DownloadmapphotoResource::collection(($farms)));
-        return DownloadmapphotoResource::collection(($province));
-        // $map = Map::where("province",$province)
-        //     ->whereHas('farms', function ($query) use ($id) {
-        //         $query->where('id', $id);
-        //     })->with('farms')->first();
-        //     dd($map);
-            // return $map;
-
-
-        // if($map ==null){
-        //     return response()->json(['Not fount' => false],);
-        // }
-        // return response()->json(['success' => true, 'data' => $map->image], 201);
-
-       
+        return DownloadmapphotoResource::collection(($province));   
         
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, string $id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy(string $id)
-    // {
-    //     //
-    // }
 }
 }

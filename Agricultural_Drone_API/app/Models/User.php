@@ -60,7 +60,6 @@ class User extends Authenticatable
         $user = self ::updateOrCreate(["id"=>$id], $user);
         return $user;
     }
-// ===================================Relationship=============================
 
 // ==================================relationships================================
 

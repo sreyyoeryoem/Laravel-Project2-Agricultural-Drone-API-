@@ -37,6 +37,7 @@ class Plan extends Model
     }
 
 // ======================Relationship==========================
+
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
     }

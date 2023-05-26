@@ -37,9 +37,6 @@ Route::middleware('auth:sanctum')->group( function() {
 
 Route::get('/roles', [RoleController::class, 'index']);
 Route::post('/roles', [RoleController::class, 'store']);
-// Route::get('/roles', [RoleController::class, 'show']);
-// Route::put('/roles', [RoleController::class, 'update']);
-// Route::delete('/roles', [RoleController::class, 'destroy']);
 
 // ============================User====================================
 
@@ -71,8 +68,8 @@ Route::get('/drones', [DronController::class, 'index']);
 Route::post('/drones', [DronController::class, 'store']);
 Route::get('/drones/{drone_id}', [DronController::class, 'show']);
 Route::put('/drones/{drone_id}', [DronController::class, 'update']);
-Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDroen']);
-Route::put('/udpdat_drones_instructions/{drone_id}', [DronController::class, 'updateStatusDroen']);
+Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDrone']);
+Route::put('/udpdat_drones_instructions/{drone_id}', [DronController::class, 'updateStatusDrone']);
 
 // ===============================Drone_plan=====================================
 Route::get('/drone_plans', [drone_plansController::class, 'index']);    

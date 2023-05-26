@@ -16,6 +16,9 @@ class Instruction extends Model
         'drone_id'
     ];
 
+
+    // ===============================relationships========================
+    
     public function drone():BelongsTo{
         return $this->belongsTo(Drone::class);
     }

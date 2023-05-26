@@ -46,14 +46,14 @@ class DronController extends Controller
         return response()->json(['success' => true, 'data' => $drone], 200);
     }
     
-    public function getLocationDroen(string $id){
+    public function getLocationDrone(string $id){
         $data = Drone::where("drone_id", $id)->first();
         $data = new showLocationDrone($data);
         return response()->json(['success' => true, 'data' => $data], 200);
         
     }
 
-    public function updateStatusDroen(Request $request, $drone_id){
+    public function updateStatusDrone(Request $request, $drone_id){
     $drone = Drone::where('drone_id',$drone_id)->first();
     $instruction = $drone->instructions();
     $instruction->update([
@@ -62,6 +62,5 @@ class DronController extends Controller
     return $instruction->get();
                   
     }
-
 }
 
