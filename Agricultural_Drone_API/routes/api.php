@@ -79,3 +79,6 @@ Route::post('/drone_plans', [drone_plansController::class, 'store']);
 Route::get('/maps', [MapController::class, 'index']);    
 Route::post('/maps', [MapController::class, 'store']);
 Route::get('/maps/{province}/{id}', [MapController::class, 'DownloadMapPhoto']);
+Route::delete('/maps/{province}/{id}', [MapController::class, 'deleteMap']);
+Route::post('/maps/{province}/{id}', [MapController::class, 'createMap']);
+
