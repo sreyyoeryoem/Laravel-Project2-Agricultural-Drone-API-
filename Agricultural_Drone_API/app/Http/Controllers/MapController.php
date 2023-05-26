@@ -34,18 +34,12 @@ class MapController extends Controller
         return response()->json(['success' => true, 'data' => $map], 201);
     }
 
-    /**
-
-     */
     // =========================================Download image map of farm=======================
 
     public function DownloadMapPhoto($province,$id)
     {
-   
         $farmId = Farm::where('id', $id)->first();
-        
         $map = Map::where('province', $province)->first();
-        
         if($map){
             if($farmId){
                 return response()->json(["image"=>$map->image], 200);
