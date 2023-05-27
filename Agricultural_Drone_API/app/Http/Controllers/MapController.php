@@ -20,8 +20,7 @@ class MapController extends Controller
     public function index()
     {
         $map  = Map::all();
-        $map = MapResource::collection($map);
-        return response()->json(['success' => true, 'data' => $map], 200);  
+        $map = MapResource::collection($map); 
         return response()->json(['success' => true, 'data' => $map], 200);
 
     }
@@ -77,6 +76,7 @@ class MapController extends Controller
 
         if($map){
             if($farmId){
+                
                 $map->image = $request->input("image");
                 $map->save();
             }

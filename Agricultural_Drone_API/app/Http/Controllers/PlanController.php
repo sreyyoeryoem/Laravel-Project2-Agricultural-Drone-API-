@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlanRequest;
 use App\Http\Resources\PlanResource;
+use App\Http\Resources\ShowPlanResource;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -32,10 +33,11 @@ class PlanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showsPecifiedInstruction(string $id)
     {
         $plan = Plan::where("name", $id)->first();
-        return response()->json(['success' => true, 'data' => $plan], 201);
+        $pecifiedInstruction = new ShowPlanResource($plan);
+        return response()->json(['success' => true, 'data' => $pecifiedInstruction], 200);
     }
     
 }

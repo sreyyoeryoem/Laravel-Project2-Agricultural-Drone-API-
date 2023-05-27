@@ -22,4 +22,7 @@ class Instruction extends Model
     public function drone():BelongsTo{
         return $this->belongsTo(Drone::class);
     }
+    public function plan():BelongsTo{
+        return $this->belongsTo(Plan::class);
+    }
 }
