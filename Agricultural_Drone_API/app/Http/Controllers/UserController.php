@@ -24,16 +24,9 @@ class UserController extends Controller
      */
     public function register(StoreUserRequest $request)
     {
-     
         $user = User::store($request);
         $token = null;
-
-        if ($user->role_id == '1') {
-            $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
-        } else {
-            // dd(2);
-            $token = $user->createToken("USER-TOKEN", ['select']);
-        }
+        $token = $user->createToken('FARMER-TOKEN', ['select', 'create', 'update', 'delete']);
         return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
     }
 
@@ -41,10 +34,9 @@ class UserController extends Controller
     public function login(StoreUserRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        // dd(Auth::attempt($credentials));
+  
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            // dd($user->createToken('API Token')->plainTextToken);
             $token = $user->createToken('API Token')->plainTextToken;
             return response()->json([
                 'user' => $user,
@@ -58,6 +50,7 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        // dd($request->user());
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }

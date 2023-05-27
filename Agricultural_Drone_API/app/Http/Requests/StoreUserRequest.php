@@ -30,13 +30,10 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
-                'required',
-                Rule::unique('users')->ignore($this->id),
-            ],
+            'name' => "required",
             'email' => 'required',
             'password' => 'required',
-            'role_id' => 'required',
+            
         ];
     }
 }

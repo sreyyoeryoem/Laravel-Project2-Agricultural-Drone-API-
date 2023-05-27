@@ -27,60 +27,61 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+   
+
+
 });
 
 Route::middleware('auth:sanctum')->group( function() {
+    Route::post('/users/logout', [UserController::class, 'logout']);
+    // =============================Location================================
+
+    Route::get("/locations",[LocationController::class, 'index']);
+    Route::post("/locations",[LocationController::class, 'store']);
+
+    // =============================Farm================================
+    Route::get("/farms",[FarmController::class, 'index']);
+    Route::post("/farms",[FarmController::class, 'store']);
+
+    // ===============================plan=====================================
+    Route::get('/plans', [PlanController::class, 'index']);    
+    Route::post('/plans', [PlanController::class, 'store']);
+    Route::get('/plans/{name}', [PlanController::class, 'showsPecifiedInstruction']);
+    Route::post('/plans/plan', [PlanController::class, 'store']);
+
+
+    // =============================Instruction================================
+    Route::get("/instructions",[InstructionController::class, 'index']);
+    Route::post("/instructions",[InstructionController::class, 'store']);
+
+    // ===============================Drone=====================================
+    Route::get('/drones', [DronController::class, 'index']);    
+    Route::post('/drones', [DronController::class, 'store']);
+    Route::get('/drones/{drone_id}', [DronController::class, 'show']);
+    Route::put('/drones/{drone_id}', [DronController::class, 'update']);
+    Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDrone']);
+    Route::put('/udpdat_drones_instructions/{drone_id}', [DronController::class, 'updateStatusDrone']);
+
+
+
+    // ===============================Drone_plan=====================================
+    Route::get('/drone_plans', [drone_plansController::class, 'index']);    
+    Route::post('/drone_plans', [drone_plansController::class, 'store']);
+
+    // ===============================Map=====================================
+    Route::get('/maps', [MapController::class, 'index']);    
+    Route::post('/maps', [MapController::class, 'store']);
+    Route::get('/maps/{province}/{id}', [MapController::class, 'DownloadMapPhoto']);
+    Route::delete('/maps/{province}/{id}', [MapController::class, 'deleteMap']);
+    Route::post('/maps/{province}/{id}', [MapController::class, 'createMap']);
+
     
 });
-// ============================Role====================================
-
-Route::get('/roles', [RoleController::class, 'index']);
-Route::post('/roles', [RoleController::class, 'store']);
 
 // ============================User====================================
 
 Route::get('/users', [UserController::class, 'index']);
-Route::post('/users', [UserController::class, 'register']);
+Route::post('/users/register', [UserController::class, 'register']);
+Route::post('/users/login', [UserController::class, 'login']);
 
-// =============================Location================================
-
-Route::get("/locations",[LocationController::class, 'index']);
-Route::post("/locations",[LocationController::class, 'store']);
-
-// =============================Farm================================
-Route::get("/farms",[FarmController::class, 'index']);
-Route::post("/farms",[FarmController::class, 'store']);
-
-// ===============================plan=====================================
-Route::get('/plans', [PlanController::class, 'index']);    
-Route::post('/plans', [PlanController::class, 'store']);
-Route::get('/plans/{name}', [PlanController::class, 'showsPecifiedInstruction']);
-Route::post('/plans/plan', [PlanController::class, 'store']);
-
-
-// =============================Instruction================================
-Route::get("/instructions",[InstructionController::class, 'index']);
-Route::post("/instructions",[InstructionController::class, 'store']);
-
-// ===============================Drone=====================================
-Route::get('/drones', [DronController::class, 'index']);    
-Route::post('/drones', [DronController::class, 'store']);
-Route::get('/drones/{drone_id}', [DronController::class, 'show']);
-Route::put('/drones/{drone_id}', [DronController::class, 'update']);
-Route::get('/drones/{drone_id}/location', [DronController::class, 'getLocationDrone']);
-Route::put('/udpdat_drones_instructions/{drone_id}', [DronController::class, 'updateStatusDrone']);
-
-
-
-// ===============================Drone_plan=====================================
-Route::get('/drone_plans', [drone_plansController::class, 'index']);    
-Route::post('/drone_plans', [drone_plansController::class, 'store']);
-
-// ===============================Map=====================================
-Route::get('/maps', [MapController::class, 'index']);    
-Route::post('/maps', [MapController::class, 'store']);
-Route::get('/maps/{province}/{id}', [MapController::class, 'DownloadMapPhoto']);
-Route::delete('/maps/{province}/{id}', [MapController::class, 'deleteMap']);
-Route::post('/maps/{province}/{id}', [MapController::class, 'createMap']);
 
