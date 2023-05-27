@@ -36,7 +36,12 @@ class PlanController extends Controller
     public function showsPecifiedInstruction(string $id)
     {
         $plan = Plan::where("name", $id)->first();
+        if(!$plan){
+            return response()->json(['message' => "Not found name pland"], 401);
+
+        }
         $pecifiedInstruction = new ShowPlanResource($plan);
+        
         return response()->json(['success' => true, 'data' => $pecifiedInstruction], 200);
     }
     

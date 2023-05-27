@@ -45,7 +45,7 @@ class MapController extends Controller
                 return response()->json(["image"=>$map->image], 200);
             }
             else{
-                return response()->json(["message"=> "image not found!"], 404);
+                return response()->json(["message" => "Not found id farm!"], 401);
             }
         }
     }
@@ -60,7 +60,7 @@ class MapController extends Controller
                 $map->save();
             }
             else{
-                return response()->json(["message"=> "image not found!"], 404);
+                return response()->json(["message"=> "image not found!"], 401);
             }
         }
         return response()->json(['success' => true, 'data' => $map], 201);
@@ -81,7 +81,7 @@ class MapController extends Controller
                 $map->save();
             }
             else{
-                return response()->json(["message"=> "image not found!"], 404);
+                return response()->json(["message"=> "image not found!"], 401);
             }
         }
         return response()->json(['success' => true, 'data' => $map], 201);
